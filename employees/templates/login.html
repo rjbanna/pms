@@ -1,31 +1,41 @@
-{% extends 'base.html' %}
+<!-- {% extends 'base.html' %} -->
 
-{% block title %}
+<!-- {% block title %}
   Login
-{% endblock %}
+{% endblock %} -->
 
-{% block content %}
+
+<!-- {% block content %} -->
+
+{% include 'partials/headers.html' %}
+
+<header>
+  <title>Login</title>
+</header>
+
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100 p-t-50 p-b-90">
-        <form class="login100-form validate-form flex-sb flex-w">
+        <form class="login100-form validate-form flex-sb flex-w" method="POST" action = '{% url "login_user" %}' > {% csrf_token %}
           <span class="login100-form-title p-b-51">
             Login
           </span>
-
+          {% if 'error' in request.session %}
+            {{ request.session.error }}
+          {% endif %}
           <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
             <input class="input100" type="text" name="username" placeholder="Username">
             <span class="focus-input100"></span>
           </div>
 
           <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-            <input class="input100" type="password" name="pass" placeholder="Password">
+            <input class="input100" type="password" name="password" placeholder="Password">
             <span class="focus-input100"></span>
           </div>
-
+          {{d}}
           <div class="flex-sb-m w-full p-t-3 p-b-24">
             <div>
-              <a href="#" class="txt1">
+              <a href="{% url 'forgot_password' %}" class="txt1">
                 Forgot Password?
               </a>
             </div>
@@ -42,6 +52,7 @@
     </div>
   </div>
 
-
   <div id="dropDownSelect1"></div>
-{% endblock %}
+<!-- {% endblock %} -->
+
+{% include 'partials/footer.html' %}

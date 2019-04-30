@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Dashboard
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="row">
+  <!-- SIDEBAR -->
+  <div class="col-md-2" style="background-color: #7486d5;">
+    {% include 'partials/sidebar.html' %}
+  </div>
+  <!-- SIDEBAR END -->
+
+  <!-- MAIN CONTENT -->
+  <div class="col-md-10">
+
+
+    <h2>{{ user.get_full_name }}</h2>
+    <ul>
+    <li>Username: {{ user.username }}</li>
+    <li>branch: {{ user.profile.branch }}</li>
+    <li>designation: {{ user.profile.designation }}</li>
+    <li>sal: {{ user.profile.salary }}</li>
+    <li>join: {{ user.profile.joining_date }}</li>
+    <li>Birth Date: {{ user.profile.birth_date }}</li>
+    </ul>
+  </div>
+  <!-- MAIN CONTENT END -->
+</div>
+
+{% endblock %}

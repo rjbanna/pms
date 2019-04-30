@@ -2,9 +2,16 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     {% include 'partials/headers.html' %}
+    {% include 'partials/navbar.html' %}
   </head>
   <body>
-    <div class = 'container'>
+
+
+
+    <div class = 'container-fluid' style="margin-top: -20px;">
+      {% block sidebar %}
+      {% endblock %}
+
       {% block content %}
       {% endblock %}
     </div>

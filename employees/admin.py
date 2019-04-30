@@ -3,4 +3,4 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Designation)
-admin.site.register(Employees)
+admin.site.register(Profile)

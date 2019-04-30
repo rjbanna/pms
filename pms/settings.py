@@ -78,6 +78,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pms.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -88,6 +90,17 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'django_pms',
+#         'HOST': '127.0.0.1',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#     }
+# }
 
 
 # Password validation
