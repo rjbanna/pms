@@ -44,3 +44,22 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Client(models.Model):
+    name = models.CharField(max_length = 255)
+    email = models.CharField(max_length = 255)
+    phone = models.IntegerField()
+    address = models.TextField(max_length = 255)
+    city = models.CharField(max_length = 255)
+    state = models.CharField(max_length = 255)
+    zipcode = models.CharField(max_length = 255)
+    country = models.CharField(max_length = 255)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = 'Client'
+        verbose_name_plural = 'Clients'
+
+    def __str__(self):
+        return self.name

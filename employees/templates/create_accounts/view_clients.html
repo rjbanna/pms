@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  View Clients
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <!-- SIDEBAR -->
+  <div class="col-md-2" style="box-shadow: 0px 3px 10px #bfbfbf; margin-top:-15px; height:100%;">
+    {% include 'partials/sidebar.html' %}
+  </div>
+  <!-- SIDEBAR END -->
+
+  <!-- MAIN CONTENT -->
+
+  <div class="col-md-10">
+    <div class="container-fluid">
+      <h3>View Clients</h3><br />
+
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h4 class="m-0 font-weight-bold text-primary">Clients List</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Country</th>
+                  <th>Active</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Garrett Winters</td>
+                  <td>Accountant</td>
+                  <td>Tokyo</td>
+                  <td>63</td>
+                  <td>2011/07/25</td>
+                  <td>$170,750</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+    <!-- <h2>{{ user.get_full_name }}</h2>
+    <ul>
+    <li>Username: {{ user.username }}</li>
+    <li>branch: {{ user.profile.branch }}</li>
+    <li>designation: {{ user.profile.designation }}</li>
+    <li>sal: {{ user.profile.salary }}</li>
+    <li>join: {{ user.profile.joining_date }}</li>
+    <li>Birth Date: {{ user.profile.birth_date }}</li>
+    </ul> -->
+
+  <!-- MAIN CONTENT END -->
+</div>
+
+{% endblock %}

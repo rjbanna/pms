@@ -1,134 +1,130 @@
-<div class="wrapper">
-  <nav id="sidebar">
-    <ul class="list-unstyled components">
-      <li class="active">
-        <a href="#">Dashboard</a>
-      </li>
-      <li>
-        <a href="#">Employees Time Sheet</a>
-      </li>
-      <li>
-        <a href="#">Task Assignment</a>
-      </li>
-
-      <li>
-        <a href="#createAccounts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Create Accounts</a>
-          <ul class="collapse list-unstyled" id="createAccounts">
-            <li>
-              <a href="#">Add Client</a>
-            </li>
-            <li>
-              <a href="#">View Clients</a>
-            </li>
-            <li>
-              <a href="#">Add Employee</a>
-            </li>
-            <li>
-              <a href="#">View Employee</a>
-            </li>
-            <li>
-              <a href="#">Employee Access</a>
-            </li>
-            <li>
-              <a href="#">Designation</a>
-            </li>
-          </ul>
-      </li>
-
-      <li>
-        <a href="#projects" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Project</a>
-        <ul class="collapse list-unstyled" id="projects">
+<nav id="sidebar">
+  <ul class="list-unstyled components">
+    <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" style="margin-top:15px;">
+      <a href="#">Dashboard</a>
+    </li>
+    <li class="d">
+      <a href="#">Employees Time Sheet</a>
+    </li>
+    <li>
+      <a href="#">Task Assignment</a>
+    </li>
+    <li>
+      <a href="#createAccounts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Create Accounts</a>
+        <ul class="collapse list-unstyled" id="createAccounts">
           <li>
-            <a href="#">Projects List</a>
+            <a href="{% url 'add_clients' %}">Add Client</a>
+          </li>
+          <li class="{% if request.resolver_match.url_name == 'view_clients' %}active{% endif %}">
+            <a href="{% url 'view_clients' %}">View Clients</a>
           </li>
           <li>
-            <a href="#">Current Projects</a>
+            <a href="#">Add Employee</a>
           </li>
           <li>
-            <a href="#">Closed Projects</a>
+            <a href="#">View Employee</a>
           </li>
           <li>
-            <a href="#">Project Details</a>
+            <a href="#">Employee Access</a>
           </li>
           <li>
-            <a href="#">Project Discussion</a>
-          </li>
-          <li>
-            <a href="#">Project PSD</a>
-          </li>
-          <li>
-            <a href="#">Task Categories</a>
+            <a href="#">Designation</a>
           </li>
         </ul>
-      </li>
+    </li>
 
-      <li>
-        <a href="#checkList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Check List</a>
-        <ul class="collapse list-unstyled" id="checkList">
-          <li>
-            <a href="#">Manage Technology</a>
-          </li>
-          <li>
-            <a href="#">Development Phase</a>
-          </li>
-          <li>
-            <a href="#">Manage Check List</a>
-          </li>
-          <li>
-            <a href="#">View Check List</a>
-          </li>
-        </ul>
-      </li>
+    <li>
+      <a href="#projects" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Project</a>
+      <ul class="collapse list-unstyled" id="projects">
+        <li>
+          <a href="#">Projects List</a>
+        </li>
+        <li>
+          <a href="#">Current Projects</a>
+        </li>
+        <li>
+          <a href="#">Closed Projects</a>
+        </li>
+        <li>
+          <a href="#">Project Details</a>
+        </li>
+        <li>
+          <a href="#">Project Discussion</a>
+        </li>
+        <li>
+          <a href="#">Project PSD</a>
+        </li>
+        <li>
+          <a href="#">Task Categories</a>
+        </li>
+      </ul>
+    </li>
 
-      <li>
-        <a href="#careers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Careers</a>
-        <ul class="collapse list-unstyled" id="careers">
-          <li>
-            <a href="#">Manage Technology</a>
-          </li>
-          <li>
-            <a href="#">Interview Tracker</a>
-          </li>
-        </ul>
-      </li>
+    <li>
+      <a href="#checkList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Check List</a>
+      <ul class="collapse list-unstyled" id="checkList">
+        <li>
+          <a href="#">Manage Technology</a>
+        </li>
+        <li>
+          <a href="#">Development Phase</a>
+        </li>
+        <li>
+          <a href="#">Manage Check List</a>
+        </li>
+        <li>
+          <a href="#">View Check List</a>
+        </li>
+      </ul>
+    </li>
 
-      <li>
-        <a href="#employeeLeave" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Employee Leaves</a>
-        <ul class="collapse list-unstyled" id="employeeLeave">
-          <li>
-            <a href="#">Blackout Days</a>
-          </li>
-        </ul>
-      </li>
+    <li>
+      <a href="#careers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Careers</a>
+      <ul class="collapse list-unstyled" id="careers">
+        <li>
+          <a href="#">Manage Technology</a>
+        </li>
+        <li>
+          <a href="#">Interview Tracker</a>
+        </li>
+      </ul>
+    </li>
 
-      <li>
-        <a href="#performance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Performance</a>
-        <ul class="collapse list-unstyled" id="performance">
-          <li>
-            <a href="#">Manage Questions</a>
-          </li>
-          <li>
-            <a href="#">Add Performance</a>
-          </li>
-          <li>
-            <a href="#">Performance Report</a>
-          </li>
-        </ul>
-      </li>
+    <li>
+      <a href="#employeeLeave" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Employee Leaves</a>
+      <ul class="collapse list-unstyled" id="employeeLeave">
+        <li>
+          <a href="#">Blackout Days</a>
+        </li>
+      </ul>
+    </li>
 
-      <li>
-        <a href="#others" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Others</a>
-        <ul class="collapse list-unstyled" id="others">
-          <li>
-            <a href="#">Knowledge Entry</a>
-          </li>
-          <li>
-            <a href="#">Change Admin Password</a>
-          </li>
-        </ul>
-      </li>
+    <li>
+      <a href="#performance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Performance</a>
+      <ul class="collapse list-unstyled" id="performance">
+        <li>
+          <a href="#">Manage Questions</a>
+        </li>
+        <li>
+          <a href="#">Add Performance</a>
+        </li>
+        <li>
+          <a href="#">Performance Report</a>
+        </li>
+      </ul>
+    </li>
 
-    </ul>
-  </nav>
+    <li>
+      <a href="#others" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Others</a>
+      <ul class="collapse list-unstyled" id="others">
+        <li>
+          <a href="#">Knowledge Entry</a>
+        </li>
+        <li>
+          <a href="#">Change Admin Password</a>
+        </li>
+      </ul>
+    </li>
 
-</div>
+  </ul>
+</nav>

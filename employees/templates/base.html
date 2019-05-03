@@ -6,15 +6,11 @@
   </head>
   <body>
 
-
-
-    <div class = 'container-fluid' style="margin-top: -20px;">
-      {% block sidebar %}
-      {% endblock %}
-
+    <div class = 'container-fluid'>
       {% block content %}
       {% endblock %}
     </div>
+
     {% include 'partials/footer.html' %}
   </body>
 </html>
