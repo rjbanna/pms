@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Edit Clients
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <!-- SIDEBAR -->
+  <div class="col-md-2" style="box-shadow: 0px 3px 10px #bfbfbf; margin-top:-15px; height:100%;">
+    {% include 'partials/sidebar.html' %}
+  </div>
+  <!-- SIDEBAR END -->
+
+  <!-- MAIN CONTENT -->
+
+  <div class="col-md-10">
+    <div class="container-fluid">
+      <h3>Edit Client</h3><br />
+
+      {{client}}
+
+      <form method="post" novalidate>{% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {% for field in form.visible_fields|slice:":1" %}
+          {% if field.errors %}
+            <p style="color:red;">
+              Please fill all the fields marked with *
+            </p>
+          {% endif %}
+        {% endfor %}
+
+        <table border="1">
+          {{ form }}
+        </table>
+        <!-- {{ form.as_table }} -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT END -->
+</div>
+
+{% endblock %}

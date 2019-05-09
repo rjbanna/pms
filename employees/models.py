@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from company.models import Branch
-
 # Create your models here.
 
 class Designation(models.Model):
@@ -50,7 +49,7 @@ class Client(models.Model):
     name = models.CharField(max_length = 255)
     email = models.CharField(max_length = 255)
     phone = models.IntegerField()
-    address = models.TextField(max_length = 255)
+    address = models.CharField(max_length = 255)
     city = models.CharField(max_length = 255)
     state = models.CharField(max_length = 255)
     zipcode = models.CharField(max_length = 255)
@@ -63,3 +62,38 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Technology(models.Model):
+    technology = models.CharField(max_length = 255)
+
+    class Meta:
+        verbose_name = "Technology"
+        verbose_name_plural = "Technologies"
+
+    def __str__(self):
+        return self.technology
+
+#
+# class Employee(models.Model):
+#     username = models.CharField(max_length = 255)
+#     password = models.PasswordField()
+#     firstname = models.CharField(max_length = 255)
+#     lastname = models.CharField(max_length = 255)
+#     email = models.CharField(max_length = 255)
+#     branch = models.ForeignKey(Branch, on_delete=models.CASCADE, default = '')
+#     designation = models.ForeignKey(Designation, on_delete=models.CASCADE, default = '')
+#     phone = models.IntegerField()
+#     address = models.CharField(max_length = 255)
+#     city = models.CharField(max_length = 255)
+#     state = models.CharField(max_length = 255)
+#     zipcode = models.CharField(max_length = 255)
+#     country = models.CharField(max_length = 255)
+#     active = models.BooleanField(default=True)
+#
+#     class Meta:
+#         verbose_name = 'Client'
+#         verbose_name_plural = 'Clients'
+#
+#     def __str__(self):
+#         return self.name

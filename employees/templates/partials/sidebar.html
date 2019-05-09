@@ -1,7 +1,7 @@
 <nav id="sidebar">
   <ul class="list-unstyled components">
     <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" style="margin-top:15px;">
-      <a href="#">Dashboard</a>
+      <a href="{% url 'dashboard' %}">Dashboard</a>
     </li>
     <li class="d">
       <a href="#">Employees Time Sheet</a>
@@ -10,9 +10,9 @@
       <a href="#">Task Assignment</a>
     </li>
     <li>
-      <a href="#createAccounts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Create Accounts</a>
+      <a href="#createAccounts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Accounts</a>
         <ul class="collapse list-unstyled" id="createAccounts">
-          <li>
+          <li class="{% if request.resolver_match.url_name == 'add_clients' %}active{% endif %}">
             <a href="{% url 'add_clients' %}">Add Client</a>
           </li>
           <li class="{% if request.resolver_match.url_name == 'view_clients' %}active{% endif %}">
@@ -27,8 +27,8 @@
           <li>
             <a href="#">Employee Access</a>
           </li>
-          <li>
-            <a href="#">Designation</a>
+          <li class="{% if request.resolver_match.url_name == 'designation' %}active style='color:black;' {% endif %}">
+            <a href="{% url 'designation' %}">Designation</a>
           </li>
         </ul>
     </li>
@@ -64,7 +64,7 @@
       <a href="#checkList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Check List</a>
       <ul class="collapse list-unstyled" id="checkList">
         <li>
-          <a href="#">Manage Technology</a>
+          <a href="{% url 'technology' %}">Manage Technology</a>
         </li>
         <li>
           <a href="#">Development Phase</a>
@@ -82,7 +82,7 @@
       <a href="#careers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Careers</a>
       <ul class="collapse list-unstyled" id="careers">
         <li>
-          <a href="#">Manage Technology</a>
+          <a href="{% url 'technology' %}">Manage Technology</a>
         </li>
         <li>
           <a href="#">Interview Tracker</a>

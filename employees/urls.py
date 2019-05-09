@@ -16,4 +16,15 @@ urlpatterns = [
 
     path('add_clients', views.add_clients, name = 'add_clients'),
     path('view_clients', views.view_clients, name = 'view_clients'),
+    path('delete_client/<int:client_id>/', views.delete_client, name = 'delete_client'),
+    path('edit_client/<int:client_id>/', views.edit_client, name = 'edit_client'),
+
+    path('designation', views.designation, name = 'designation'),
+    path('designation/add', views.add_designation, name = 'add_designation'),
+    path('delete_designation/<int:des_id>/', views.delete_designation, name = 'delete_designation'),
+
+    path('technology', views.technologies, name = 'technology'),
+    path('technology/add', views.add_technology, name = 'add_technology'),
+    path('technology/<int:tech_id>/edit', views.edit_technology, name = 'edit_technology'),
+    path('technology/<int:tech_id>/delete', views.delete_technology, name = 'delete_technology'),
 ]

@@ -13,3 +13,7 @@ a.navbar-brand {
 li{
   padding: 10px;
 }
+
+.form-group label{
+  font-size: 13px;
+}
