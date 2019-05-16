@@ -249,3 +249,45 @@ def delete_interview(request, inter_id):
     return redirect('interview')
 
 # ------------------------------ CAREERS - INTERVIEW TRACKER STOP ------------------------------ #
+
+
+# ------------------------------ OTHERS - KNOWLEDGE ENTRY START ------------------------------ #
+
+def knowledge(request):
+    knowledge = Knowledge.objects.all()
+    return render(request, template_name = 'others/knowledge.html', context = { 'knowledge': knowledge })
+
+def add_knowledge(request):
+    if request.method == 'POST':
+        form = KnowledgeForm(request.POST, request.FILES)
+        if form.is_valid():
+            knowledge = form.save(commit = False)
+            knowledge.save()
+            return redirect('knowledge')
+    else:
+        form = KnowledgeForm()
+
+    return render(request, template_name = 'others/add_knowledge.html', context = { 'form': form })
+
+def edit_knowledge(request, know_id):
+    knowledge = get_object_or_404(Knowledge, pk = know_id)
+    if request.method == 'POST':
+        form = KnowledgeForm(request.POST, request.FILES, instance = knowledge)
+        if form.is_valid():
+            knowledge = form.save(commit = False)
+            knowledge.save()
+            return redirect('knowledge')
+    else:
+        form = KnowledgeForm(instance = knowledge)
+
+    return render(request, template_name = 'others/edit_knowledge.html', context = { 'form': form })
+
+def delete_knowledge(request, know_id):
+    knowledge = Knowledge.objects.filter(pk = know_id)
+    if knowledge:
+        knowledge = Knowledge.objects.get(pk = know_id)
+        knowledge.delete()
+
+    return redirect('knowledge')
+
+# ------------------------------ OTHERS - KNOWLEDGE ENTRY STOP ------------------------------ #

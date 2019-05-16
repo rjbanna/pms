@@ -114,8 +114,8 @@
     <li>
       <a href="#others" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Others</a>
       <ul class="collapse list-unstyled" id="others">
-        <li>
-          <a href="#">Knowledge Entry</a>
+        <li class="{% if request.resolver_match.url_name == 'knowledge' %}active{% endif %}">
+          <a href="{% url 'knowledge' %}">Knowledge Entry</a>
         </li>
         <li>
           <a href="#">Change Admin Password</a>

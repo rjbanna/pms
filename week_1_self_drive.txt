@@ -1,0 +1,27 @@
+1 - ---- Slowing down when seeing a construction zone ahead
+2 - Estimating the motion of other vehicles
+  - Identifying road signs
+3 - All
+4 - 4,5
+5 - The green car arrives at the stop sign after you and plans to travel straight through the intersection. You choose to move first.
+  - Wait for the pedestrians to finish crossing before turning
+6 - ---- 321
+7 - Stop signs
+  - Trees
+  - Curbs
+8 - Road markings
+  - Curbs
+9 - IMU
+  - GPS
+  - LIDAR
+  - Cameras
+10 - Longitudinal
+11 - Short term planning
+12 - During a lane change, maintain our current speed or accelerate slightly
+   - If there are vehicles directly beside us on the lane, it is unsafe to lane change.
+13 - ---1,2
+14 - Lateral
+15 - B(false), C(True), E(True)
+16 - ----3421
+17 - Long term planning
+18  ----- Short term, immediate

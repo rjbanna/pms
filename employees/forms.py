@@ -47,4 +47,11 @@ class InterviewForm(forms.ModelForm):
 
     class Meta:
         model = Interview
-        fields = ('name', 'email', 'phone', 'address', 'designation', 'experience', 'location', 'company', 'gender', 'date', 'ctc', 'ectc', 'resume', 'status')
+        fields = '__all__'
+
+class KnowledgeForm(forms.ModelForm):
+    description = forms.CharField( widget=forms.Textarea )
+
+    class Meta:
+        model = Knowledge
+        fields = '__all__'

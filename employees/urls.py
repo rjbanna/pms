@@ -11,25 +11,46 @@ urlpatterns = [
 
     path('forgot_password', auth_views.PasswordChangeView.as_view(template_name='forgot_password.html'), name = 'forgot_password'),
 
+    # -------------------- ACCOUNTS --------------------#
+
     path('client', views.view_clients, name = 'view_clients'),
     path('client/add', views.add_clients, name = 'add_clients'),
     path('client/<int:client_id>/edit', views.edit_client, name = 'edit_client'),
     path('client/<int:client_id>/delete', views.delete_client, name = 'delete_client'),
+
+    path('employee/access', views.employee_access, name = 'employee_access'),
 
     path('designation', views.designation, name = 'designation'),
     path('designation/add', views.add_designation, name = 'add_designation'),
     path('designation/<int:des_id>/edit', views.edit_designation, name = 'edit_designation'),
     path('designation/<int:des_id>/delete', views.delete_designation, name = 'delete_designation'),
 
+    # -------------------- ACCOUNTS END --------------------#
+
+    # -------------------- CHECKLIST --------------------#
+
     path('technology', views.technologies, name = 'technology'),
     path('technology/add', views.add_technology, name = 'add_technology'),
     path('technology/<int:tech_id>/edit', views.edit_technology, name = 'edit_technology'),
     path('technology/<int:tech_id>/delete', views.delete_technology, name = 'delete_technology'),
+
+    # -------------------- CHECKLIST END --------------------#
+
+    # -------------------- CAREERS --------------------#
 
     path('career/interview', views.interview, name = 'interview'),
     path('career/interview/add', views.add_interview, name = 'add_interview'),
     path('career/interview/<int:inter_id>/edit', views.edit_interview, name = 'edit_interview'),
     path('career/interview/<int:inter_id>/delete', views.delete_interview, name = 'delete_interview'),
 
-    path('employee/access', views.employee_access, name = 'employee_access'),
+    # -------------------- CAREERS END --------------------#
+
+    # -------------------- OTHERS --------------------#
+
+    path('knowledge', views.knowledge, name = 'knowledge'),
+    path('knowledge/add', views.add_knowledge, name = 'add_knowledge'),
+    path('knowledge/<int:know_id>/edit', views.edit_knowledge, name = 'edit_knowledge'),
+    path('knowledge/<int:know_id>/delete', views.delete_knowledge, name = 'delete_knowledge'),
+
+    # -------------------- OTHERS END --------------------#
 ]

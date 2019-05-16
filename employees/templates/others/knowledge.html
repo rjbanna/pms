@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Knowledge
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <!-- SIDEBAR -->
+  <div class="col-md-2" style="box-shadow: 0px 3px 10px #bfbfbf; margin-top:-15px; height:100%;">
+    {% include 'partials/sidebar.html' %}
+  </div>
+  <!-- SIDEBAR END -->
+
+  <!-- MAIN CONTENT -->
+
+  <div class="col-md-10">
+    {% if 'success' in request.session %}
+      {{ request.session.success }}
+    {% endif %}
+
+    {% if 'error' in request.session %}
+      {{ request.session.error }}
+    {% endif %}
+
+    <div class="container-fluid">
+      <h3>Manage Knowledge</h3><br />
+      <div class="card shadow mb-4">
+
+        <a href="{% url 'add_knowledge' %}" class="btn btn-primary">Add Knowledge</a>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Platform</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for know in knowledge %}
+                  <tr>
+                    <td>{{ know.id }}</td>
+                    <td>{{ know }}</td>
+                    <td>{{ know.platform }}</td>
+                    <td>
+                      <a href = '{% url "edit_knowledge" know_id=know.id %}' class="btn btn-primary">Edit</a>
+                      <a href = '{% url "delete_knowledge" know_id=know.id %}' class="btn btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT END -->
+</div>
+
+{% endblock %}
