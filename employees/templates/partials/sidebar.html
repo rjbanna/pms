@@ -1,4 +1,4 @@
-<nav id="sidebar">
+<nav id="sidebar" style="height:100%;">
   <ul class="list-unstyled components">
     <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" style="margin-top:15px;">
       <a href="{% url 'dashboard' %}">Dashboard</a>
@@ -24,8 +24,8 @@
           <li>
             <a href="#">View Employee</a>
           </li>
-          <li>
-            <a href="#">Employee Access</a>
+          <li class="{% if request.resolver_match.url_name == 'employee_access' %}active style='color:black;' {% endif %}">
+            <a href="{% url 'employee_access' %}">Employee Access</a>
           </li>
           <li class="{% if request.resolver_match.url_name == 'designation' %}active style='color:black;' {% endif %}">
             <a href="{% url 'designation' %}">Designation</a>
@@ -63,7 +63,7 @@
     <li>
       <a href="#checkList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Check List</a>
       <ul class="collapse list-unstyled" id="checkList">
-        <li>
+        <li class="{% if request.resolver_match.url_name == 'technology' %}active style='color:black;' {% endif %}">
           <a href="{% url 'technology' %}">Manage Technology</a>
         </li>
         <li>
@@ -81,11 +81,8 @@
     <li>
       <a href="#careers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Careers</a>
       <ul class="collapse list-unstyled" id="careers">
-        <li>
-          <a href="{% url 'technology' %}">Manage Technology</a>
-        </li>
-        <li>
-          <a href="#">Interview Tracker</a>
+        <li class="{% if request.resolver_match.url_name == 'interview' %}active{% endif %}">
+          <a href="{% url 'interview' %}">Interviews</a>
         </li>
       </ul>
     </li>

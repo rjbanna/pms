@@ -1,0 +1,11 @@
+When we want to loop through whole input n and takes n another inputs
+for _ in range(n):
+  pass
+
+
+when there is multiple input in one line and we want to give one input to one variable and rest to second then use as below
+
+ex :- Rahul 95 65 79 85
+      name, *line = input().split()
+
+      Here first input will go to name and rest of it will assign to *line

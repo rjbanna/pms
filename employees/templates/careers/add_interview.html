@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block title %}
+  Add Interview
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <!-- SIDEBAR -->
+  <div class="col-md-2" style="box-shadow: 0px 3px 10px #bfbfbf; margin-top:-15px; height:100%;">
+    {% include 'partials/sidebar.html' %}
+  </div>
+  <!-- SIDEBAR END -->
+
+  <!-- MAIN CONTENT -->
+
+  <div class="col-md-10">
+    <div class="container-fluid">
+      <h3>Add Interview</h3><br/>
+
+      <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.name|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.email|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.phone|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.location|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12 mb-0">
+            {{ form.address|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4 mb-0">
+            {{ form.gender|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-4 mb-0">
+            {{ form.designation|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-4 mb-0">
+            {{ form.status|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.experience|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.company|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.ctc|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.ectc|as_crispy_field }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.date|add_class:"datepicker" }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.resume|as_crispy_field }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT END -->
+</div>
+
+{% endblock %}

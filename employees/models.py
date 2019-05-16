@@ -74,7 +74,56 @@ class Technology(models.Model):
     def __str__(self):
         return self.technology
 
-#
+
+class EmployeeAccess(models.Model):
+    employee_designation = models.ForeignKey(Designation, on_delete = models.CASCADE)
+    access = models.CharField(max_length = 255)
+
+    class Meta:
+        verbose_name = "Employee Access"
+        verbose_name_plural = "Employee Access"
+
+    # def __str__(self):
+    #     return self.employee_designation
+
+
+class Interview(models.Model):
+    GENDER_CHOICES = (
+        ("MALE", "Male"),
+        ("FEMALE", "Female"),
+    )
+
+    STATUS_CHOICES = (
+        ('SCHEDULED', 'Scheduled'),
+        ('IN PROGRESS', 'In Progress'),
+        ('TAKEN', 'Taken'),
+        ('REJECTED', 'Rejected'),
+        ('SELECTED', 'Selected'),
+    )
+
+    name = models.CharField(max_length = 255)
+    email = models.CharField(max_length = 255)
+    phone = models.IntegerField()
+    address = models.CharField(max_length = 255)
+    designation = models.ForeignKey(Designation, on_delete = models.CASCADE)
+    experience = models.CharField(max_length = 255)
+    location = models.CharField(max_length = 255)
+    company = models.CharField(max_length = 255)
+    gender = models.CharField(max_length = 255, choices = GENDER_CHOICES, default = "MALE")
+    date = models.DateField()
+    ctc = models.CharField(max_length = 255)
+    ectc = models.CharField(max_length = 255)
+    resume = models.FileField()
+    status = models.CharField(max_length = 255, choices = STATUS_CHOICES, default = "SCHEDULED")
+
+
+    class Meta:
+        verbose_name = "Interview"
+        verbose_name_plural = "Interviews"
+
+    def __str__(self):
+        return self.name
+
 # class Employee(models.Model):
 #     username = models.CharField(max_length = 255)
 #     password = models.PasswordField()

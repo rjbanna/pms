@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .forms import *
 from .models import *
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 
 def dashboard(request):
@@ -67,6 +69,13 @@ def forgot_password(request):
     return redirect('login')
 
 
+
+
+# ------------------------------ ACCOUNTS - CLIENTS START ------------------------------ #
+def view_clients(request):
+    data = Client.objects.all()
+    return render(request, template_name = 'create_accounts/view_clients.html', context = { 'data': data })
+
 def add_clients(request):
     if request.method == 'POST':
         form = AddClient(request.POST)
@@ -79,17 +88,17 @@ def add_clients(request):
 
     return render(request, template_name = 'create_accounts/add_clients.html', context = { 'form': form })
 
-def view_clients(request):
-    data = Client.objects.all()
-    return render(request, template_name = 'create_accounts/view_clients.html', context = { 'data': data })
-
-
 def edit_client(request, client_id):
-    client = Client.objects.filter(pk = client_id)
-    if client:
-        client = Client.objects.get(pk = client_id)
-        return render(request, template_name = 'create_accounts/edit_client.html', context = { 'client': client })
-
+    client = get_object_or_404(Client, pk = client_id)
+    if request.method == "POST":
+        form = AddClient(request.POST, instance = client)
+        if form.is_valid():
+            client = form.save(commit = False)
+            client.save()
+            return redirect('view_clients')
+    else:
+        form = AddClient(instance=client)
+    return render(request, template_name = 'create_accounts/edit_client.html', context = { 'form': form })
 
 def delete_client(request, client_id):
     client = Client.objects.filter(pk = client_id)
@@ -98,12 +107,25 @@ def delete_client(request, client_id):
         client.delete()
     return redirect('view_clients')
 
+# ------------------------------ ACCOUNTS - CLIENTS STOP ------------------------------ #
+
+
+# ------------------------------ ACCOUNTS - EMPLOYEE START ------------------------------ #
+# def employee(request):
+#     employee =
+# ------------------------------ ACCOUNTS - EMPLOYEE STOP ------------------------------ #
+
+
+# ------------------------------ ACCOUNTS - DESIGNATION START ------------------------------ #
+def designation(request):
+    designation = Designation.objects.all()
+    return render(request, template_name = 'create_accounts/designation.html', context = { 'designation': designation })
 
 def add_designation(request):
     if request.method == 'POST':
         form = DesignationForm(request.POST)
         if form.is_valid():
-            client = form.save(commit=False)
+            client = form.save(commit = False)
             client.save()
             request.session['success'] = "Successfully added designation"
             return redirect('designation')
@@ -112,11 +134,17 @@ def add_designation(request):
 
     return render(request, template_name = 'create_accounts/add_designation.html', context = { 'form': form })
 
-
-def designation(request):
-    designation = Designation.objects.all()
-    return render(request, template_name = 'create_accounts/designation.html', context = { 'designation': designation })
-
+def edit_designation(request, des_id):
+    desi = get_object_or_404(Designation, pk = des_id)
+    if request.method == "POST":
+        form = DesignationForm(request.POST, instance = desi)
+        if form.is_valid():
+            desi = form.save(commit = False)
+            desi.save()
+            return redirect('designation')
+    else:
+        form = DesignationForm(instance = desi)
+    return render(request, template_name = 'create_accounts/edit_designation.html', context = { 'form': form })
 
 def delete_designation(request, des_id):
     des = Designation.objects.filter(pk = des_id)
@@ -125,12 +153,22 @@ def delete_designation(request, des_id):
         des.delete()
     return redirect('designation')
 
+# ------------------------------ ACCOUNTS - DESIGNATION STOP ------------------------------ #
 
 
+
+# ------------------------------ ACCOUNTS - EMPLOYEE ACCESS START ------------------------------ #
+def employee_access(request):
+    return render(request, template_name = 'create_accounts/employee_access.html', context = { 'form': "rj" })
+
+# ------------------------------ ACCOUNTS - EMPLOYEE ACCESS STOP ------------------------------ #
+
+
+
+# ------------------------------ CAREERS - TECHNOLOGY START ------------------------------ #
 def technologies(request):
     technology = Technology.objects.all()
     return render(request, template_name = 'create_accounts/technology.html', context = { 'technology': technology })
-
 
 def add_technology(request):
     if request.method == 'POST':
@@ -146,11 +184,17 @@ def add_technology(request):
     return render(request, template_name = 'create_accounts/add_technology.html', context = { 'form': form })
 
 def edit_technology(request, tech_id):
-    technology = Technology.objects.filter(pk = tech_id)
-    if technology:
-        technology = Technology.objects.get(pk = tech_id)
-        return render(request, template_name = 'create_accounts/edit_client.html', context = { 'technology': technology })
+    technology = get_object_or_404(Technology, pk = tech_id)
+    if request.method == 'POST':
+        form = TechnologyForm(request.POST, instance = technology)
+        if form.is_valid():
+            technology = form.save(commit = False)
+            technology.save()
+            return redirect('technology')
+    else:
+        form = TechnologyForm(instance = technology)
 
+    return render(request, template_name = 'create_accounts/edit_technology.html', context = { 'form': form })
 
 def delete_technology(request, tech_id):
     technology = Technology.objects.filter(pk = tech_id)
@@ -158,3 +202,50 @@ def delete_technology(request, tech_id):
         technology = Technology.objects.get(pk = tech_id)
         technology.delete()
     return redirect('technology')
+
+# ------------------------------ CAREERS - TECHNOLOGY STOP ------------------------------ #
+
+
+
+# ------------------------------ CAREERS - INTERVIEW TRACKER START ------------------------------ #
+
+def interview(request):
+    interview = Interview.objects.all()
+    return render(request, template_name = 'careers/interview.html', context = { "interview": interview })
+
+def add_interview(request):
+    if request.method == 'POST':
+        form = InterviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            interview = form.save(commit = False)
+            interview.save()
+            request.session['success'] = "Successfully added Interview Schedule"
+            return redirect('interview')
+    else:
+        form = InterviewForm()
+
+    return render(request, template_name = 'careers/add_interview.html', context = { "form": form })
+
+def edit_interview(request, inter_id):
+    interview = get_object_or_404(Interview, pk = inter_id)
+    if request.method == 'POST':
+        form = InterviewForm(request.POST, instance = interview)
+        if form.is_valid():
+            interview = form.save(commit = False)
+            interview.save()
+            return redirect('interview')
+    else:
+        form = InterviewForm(instance = interview)
+
+    return render(request, template_name = 'careers/edit_interview.html', context = { 'form': form })
+
+
+def delete_interview(request, inter_id):
+    interview = Interview.objects.filter(pk = inter_id)
+    if interview:
+        interview = Interview.objects.get(pk = inter_id)
+        interview.delete()
+
+    return redirect('interview')
+
+# ------------------------------ CAREERS - INTERVIEW TRACKER STOP ------------------------------ #

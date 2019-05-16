@@ -23,21 +23,41 @@
 
       {{client}}
 
-      <form method="post" novalidate>{% csrf_token %}
-        {{ form.non_field_errors }}
+      <form method="post">{% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.name|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.email|as_crispy_field }}
+          </div>
+        </div>
+        {{ form.address|as_crispy_field }}
 
-        {% for field in form.visible_fields|slice:":1" %}
-          {% if field.errors %}
-            <p style="color:red;">
-              Please fill all the fields marked with *
-            </p>
-          {% endif %}
-        {% endfor %}
+        <div class="form-row">
+          <div class="form-group col-md-3 mb-0">
+            {{ form.city|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-3 mb-0">
+            {{ form.state|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-3 mb-0">
+            {{ form.zipcode|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-3 mb-0">
+            {{ form.country|as_crispy_field }}
+          </div>
+        </div>
 
-        <table border="1">
-          {{ form }}
-        </table>
-        <!-- {{ form.as_table }} -->
+        <div class="form-row">
+          <div class="form-group col-md-3 mb-0">
+            {{ form.phone|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-3 mb-0">
+            {{ form.active|as_crispy_field }}
+          </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 

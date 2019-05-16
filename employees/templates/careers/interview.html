@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Designation
+  Interview
 {% endblock %}
 
 {% block content %}
@@ -25,10 +25,10 @@
     {% endif %}
 
     <div class="container-fluid">
-      <h3>Manage Designations</h3><br />
+      <h3>Manage Interviews</h3><br />
       <div class="card shadow mb-4">
 
-        <a href="{% url 'add_designation' %}" class="btn btn-primary">Add Designation</a>
+        <a href="{% url 'add_interview' %}" class="btn btn-primary">Add Interview</a>
 
         <div class="card-body">
           <div class="table-responsive">
@@ -36,18 +36,28 @@
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
                   <th>Designation</th>
+                  <th>Experience</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {% for des in designation %}
+                {% for inter in interview %}
                   <tr>
-                    <td>{{ des.id }}</td>
-                    <td>{{ des }}</td>
+                    <td>{{ inter.id }}</td>
+                    <td>{{ inter.name }}</td>
+                    <td>{{ inter.phone }}</td>
+                    <td>{{ inter.email }}</td>
+                    <td>{{ inter.designation }}</td>
+                    <td>{{ inter.experience }}</td>
+                    <td>{{ inter.status }}</td>
                     <td>
-                      <a href = '{% url "edit_designation" des_id=des.id %}' class="btn btn-primary">Edit</a>
-                      <a href = '{% url "delete_designation" des_id=des.id %}' class="btn btn-danger">Delete</a>
+                      <a href = '{% url "edit_interview" inter_id=inter.id %}' class="btn btn-primary">Edit</a>
+                      <a href = '{% url "delete_interview" inter_id=inter.id %}' class="btn btn-danger">Delete</a>
                     </td>
                   </tr>
                 {% endfor %}

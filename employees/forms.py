@@ -35,7 +35,16 @@ class DesignationForm(forms.ModelForm):
         model = Designation
         fields = ('designation',)
 
+
 class TechnologyForm(forms.ModelForm):
     class Meta:
         model = Technology
         fields = ('technology',)
+
+
+class InterviewForm(forms.ModelForm):
+    date = forms.CharField(widget=forms.TextInput(attrs={'class': 'datepicker'}))
+
+    class Meta:
+        model = Interview
+        fields = ('name', 'email', 'phone', 'address', 'designation', 'experience', 'location', 'company', 'gender', 'date', 'ctc', 'ectc', 'resume', 'status')
