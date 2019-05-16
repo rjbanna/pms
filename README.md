@@ -6,7 +6,7 @@ New ideas are welcomed.
 
 <h2>SCREENSHOTS</h2>
 
-1) <h4>Dashboard</h4><br>
+1) <h4>Dashboard</h4>
    First screen after login
    
 ![alt text](screenshots/Dashboard.png)
