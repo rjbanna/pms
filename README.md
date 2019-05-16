@@ -4,7 +4,9 @@ This project is in initial state so please wait for an update. After making some
 New ideas are welcomed.
 
 
-SCREENSHOTS
+<h2>SCREENSHOTS</h2>
 
 1) Dashboard
 ![Alt text](screenshots/dashboard.jpg?raw=true "Dashboard")
+
+![alt text](screenshots/dashboard.png)
