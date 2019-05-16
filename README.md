@@ -7,6 +7,4 @@ New ideas are welcomed.
 <h2>SCREENSHOTS</h2>
 
 1) Dashboard
-![Alt text](screenshots/dashboard.jpg?raw=true "Dashboard")
-
 ![alt text](screenshots/dashboard.png)
