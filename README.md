@@ -7,4 +7,5 @@ New ideas are welcomed.
 <h2>SCREENSHOTS</h2>
 
 1) Dashboard
-![alt text](https://prnt.sc/npgheu)
+
+![alt text](screenshots/Dashboard.png)
