@@ -42,7 +42,25 @@ New ideas are welcomed.
 ![alt text](screenshots/add_interview.png)
 
 
-7) View Interviews</h4>
+7) <h4>View Interviews</h4>
    Here you can view added interviews. Here you can add, edit and delete the interviews and can also change it's status
    
 ![alt text](screenshots/interview_list.png)
+
+
+8) <h4>View Knowledge Entries</h4>
+   Here you can view added Knowledge entries. It is list of discoveries that a developer made during the development. It can be a piece of code or some kind of important steps.
+   
+![alt text](screenshots/knowledge.png)
+
+
+9) <h4>Add Knowledge Entry</h4>
+   Here you can add knowledge or important information. Here you can add, edit and delete the knowledge entries
+   
+![alt text](screenshots/knowledge_add.png)
+
+
+10) <h4>Edit Knowledge Entry</h4>
+   Here you can edit existing knowledge entry
+   
+![alt text](screenshots/edit_knowledge.png)
