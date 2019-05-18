@@ -251,6 +251,50 @@ def delete_interview(request, inter_id):
 # ------------------------------ CAREERS - INTERVIEW TRACKER STOP ------------------------------ #
 
 
+
+# ------------------------------ PERFORMANCE - MANAGE QUESTION START ------------------------------ #
+
+def question_list(request):
+    questions = PerformanceQuestion.objects.all()
+    return render(request, template_name = 'performance/question_list.html', context = { 'questions': questions })
+
+def add_question(request):
+    if request.method == 'POST':
+        form = PerformanceQuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit = False)
+            question.save()
+            return redirect('question_list')
+    else:
+        form = PerformanceQuestionForm()
+
+    return render(request, template_name = 'performance/add_question.html', context = {'form': form})
+
+def edit_question(request, ques_id):
+    question = get_object_or_404(PerformanceQuestion, pk = ques_id)
+    if request.method == 'POST':
+        form = PerformanceQuestionForm(request.POST, instance = question)
+        if form.is_valid():
+            question = form.save(commit = False)
+            question.save()
+            return redirect('question_list')
+    else:
+        form = PerformanceQuestionForm(instance = question)
+
+    return render(request, template_name = 'performance/edit_question.html', context = {'form': form})
+
+def delete_question(request, ques_id):
+    question = PerformanceQuestion.objects.filter(pk = ques_id)
+    if question:
+        question = PerformanceQuestion.objects.get(pk = ques_id)
+        question.delete()
+
+    return redirect('question_list')
+
+# ------------------------------ PERFORMANCE - MANAGE QUESTION STOP ------------------------------ #
+
+
+
 # ------------------------------ OTHERS - KNOWLEDGE ENTRY START ------------------------------ #
 
 def knowledge(request):

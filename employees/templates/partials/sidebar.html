@@ -61,28 +61,13 @@
     </li>
 
     <li>
-      <a href="#checkList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Check List</a>
-      <ul class="collapse list-unstyled" id="checkList">
-        <li class="{% if request.resolver_match.url_name == 'technology' %}active style='color:black;' {% endif %}">
-          <a href="{% url 'technology' %}">Manage Technology</a>
-        </li>
-        <li>
-          <a href="#">Development Phase</a>
-        </li>
-        <li>
-          <a href="#">Manage Check List</a>
-        </li>
-        <li>
-          <a href="#">View Check List</a>
-        </li>
-      </ul>
-    </li>
-
-    <li>
       <a href="#careers" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Careers</a>
       <ul class="collapse list-unstyled" id="careers">
         <li class="{% if request.resolver_match.url_name == 'interview' %}active{% endif %}">
           <a href="{% url 'interview' %}">Interviews</a>
+        </li>
+        <li class="{% if request.resolver_match.url_name == 'technology' %}active{% endif %}">
+          <a href="{% url 'technology' %}">Manage Technology</a>
         </li>
       </ul>
     </li>
@@ -99,8 +84,8 @@
     <li>
       <a href="#performance" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Performance</a>
       <ul class="collapse list-unstyled" id="performance">
-        <li>
-          <a href="#">Manage Questions</a>
+        <li class="{% if request.resolver_match.url_name == 'question_list' or request.resolver_match.url_name == 'add_question' or request.resolver_match.url_name == 'edit_question' %}active{% endif %}">
+          <a href="{% url 'question_list' %}">Manage Questions</a>
         </li>
         <li>
           <a href="#">Add Performance</a>

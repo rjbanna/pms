@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block title %}
+  Add Question
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <!-- SIDEBAR -->
+  <div class="col-md-2" style="box-shadow: 0px 3px 10px #bfbfbf; margin-top:-15px; height:100%;">
+    {% include 'partials/sidebar.html' %}
+  </div>
+  <!-- SIDEBAR END -->
+
+  <!-- MAIN CONTENT -->
+
+  <div class="col-md-10">
+    <div class="container-fluid">
+      <h3>Add Question</h3><br/>
+
+      <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-12 mb-0">
+            {{ form.question|as_crispy_field }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT END -->
+</div>
+
+{% endblock %}

@@ -55,3 +55,8 @@ class KnowledgeForm(forms.ModelForm):
     class Meta:
         model = Knowledge
         fields = '__all__'
+
+class PerformanceQuestionForm(forms.ModelForm):
+    class Meta:
+        model = PerformanceQuestion
+        fields = '__all__'

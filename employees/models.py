@@ -138,3 +138,14 @@ class Knowledge(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class PerformanceQuestion(models.Model):
+    question = models.CharField(max_length = 500)
+
+    class Meta:
+        verbose_name = 'Performance Question'
+        verbose_name_plural = 'Performance Questions'
+
+    def __str__(self):
+        return self.question

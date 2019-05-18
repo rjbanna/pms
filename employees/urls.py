@@ -27,15 +27,6 @@ urlpatterns = [
 
     # -------------------- ACCOUNTS END --------------------#
 
-    # -------------------- CHECKLIST --------------------#
-
-    path('technology', views.technologies, name = 'technology'),
-    path('technology/add', views.add_technology, name = 'add_technology'),
-    path('technology/<int:tech_id>/edit', views.edit_technology, name = 'edit_technology'),
-    path('technology/<int:tech_id>/delete', views.delete_technology, name = 'delete_technology'),
-
-    # -------------------- CHECKLIST END --------------------#
-
     # -------------------- CAREERS --------------------#
 
     path('career/interview', views.interview, name = 'interview'),
@@ -43,7 +34,21 @@ urlpatterns = [
     path('career/interview/<int:inter_id>/edit', views.edit_interview, name = 'edit_interview'),
     path('career/interview/<int:inter_id>/delete', views.delete_interview, name = 'delete_interview'),
 
+    path('technology', views.technologies, name = 'technology'),
+    path('technology/add', views.add_technology, name = 'add_technology'),
+    path('technology/<int:tech_id>/edit', views.edit_technology, name = 'edit_technology'),
+    path('technology/<int:tech_id>/delete', views.delete_technology, name = 'delete_technology'),
+
     # -------------------- CAREERS END --------------------#
+
+    # -------------------- PERFORMANCE --------------------#
+
+    path('performance/questions', views.question_list, name = 'question_list'),
+    path('performance/question/add', views.add_question, name = 'add_question'),
+    path('performance/question/<int:ques_id>/edit', views.edit_question, name = 'edit_question'),
+    path('performance/question/<int:ques_id>/delete', views.delete_question, name = 'delete_question'),
+
+    # -------------------- PERFORMANCE END --------------------#
 
     # -------------------- OTHERS --------------------#
 
