@@ -18,6 +18,29 @@ class Designation(models.Model):
         return self.designation
 
 
+class Employee(models.Model):
+    username = models.CharField(max_length = 255)
+    first_name = models.CharField(max_length = 255)
+    last_name = models.CharField(max_length = 255)
+    email = models.CharField(max_length = 255)
+    phone = models.CharField(max_length = 255)
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, default = '')
+    designation = models.ForeignKey(Designation, on_delete = models.CASCADE)
+    address = models.CharField(max_length = 255)
+    birth_date = models.DateField(null=True, blank=True)
+    joining_date = models.DateField(null=True, blank=True)
+    salary = models.IntegerField(null=True, blank=True)
+    leaves = models.IntegerField(default = 1, null=True, blank=True)
+    photo = models.FileField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Employee'
+        verbose_name_plural = 'Employees'
+
+    def __str__(self):
+        return self.first_name
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default = None)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE, default = '')
@@ -149,3 +172,16 @@ class PerformanceQuestion(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class Project(models.Model):
+    title = models.CharField(max_length = 50)
+    description = models.CharField(max_length = 500)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    project_files = models.FileField(null=True, blank=True)
+    assigned_to = models.CharField(max_length = 500)
+
+    class Meta:
+        verbose_name = 'Project'
+        verbose_name_plural = 'Projects'

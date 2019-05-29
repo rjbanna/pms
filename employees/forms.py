@@ -50,7 +50,7 @@ class InterviewForm(forms.ModelForm):
         fields = '__all__'
 
 class KnowledgeForm(forms.ModelForm):
-    description = forms.CharField( widget=forms.Textarea )
+    description = forms.CharField(widget=forms.Textarea )
 
     class Meta:
         model = Knowledge
@@ -60,3 +60,20 @@ class PerformanceQuestionForm(forms.ModelForm):
     class Meta:
         model = PerformanceQuestion
         fields = '__all__'
+
+class EmployeeForm(forms.ModelForm):
+    class Meta:
+        model = Employee
+        fields = '__all__'
+
+class ProjectForm(forms.ModelForm):
+    description = forms.CharField(widget = forms.Textarea)
+
+    class Meta:
+        model = Project
+        fields = ('title', 'description', 'start_date', 'end_date', 'project_files')
+
+class ProjectAssignForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('title',)

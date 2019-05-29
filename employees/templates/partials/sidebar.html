@@ -3,12 +3,7 @@
     <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" style="margin-top:15px;">
       <a href="{% url 'dashboard' %}">Dashboard</a>
     </li>
-    <li class="d">
-      <a href="#">Employees Time Sheet</a>
-    </li>
-    <li>
-      <a href="#">Task Assignment</a>
-    </li>
+
     <li>
       <a href="#createAccounts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Accounts</a>
         <ul class="collapse list-unstyled" id="createAccounts">
@@ -18,11 +13,11 @@
           <li class="{% if request.resolver_match.url_name == 'view_clients' %}active{% endif %}">
             <a href="{% url 'view_clients' %}">View Clients</a>
           </li>
-          <li>
-            <a href="#">Add Employee</a>
+          <li class="{% if request.resolver_match.url_name == 'add_employee' %}active{% endif %}">
+            <a href="{% url 'add_employee' %}">Add Employee</a>
           </li>
-          <li>
-            <a href="#">View Employee</a>
+          <li class="{% if request.resolver_match.url_name == 'employee' %}active{% endif %}">
+            <a href="{% url 'employee' %}">View Employee</a>
           </li>
           <li class="{% if request.resolver_match.url_name == 'employee_access' %}active style='color:black;' {% endif %}">
             <a href="{% url 'employee_access' %}">Employee Access</a>
@@ -36,26 +31,14 @@
     <li>
       <a href="#projects" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Project</a>
       <ul class="collapse list-unstyled" id="projects">
-        <li>
-          <a href="#">Projects List</a>
+        <li class="{% if request.resolver_match.url_name == 'projects' %}active{% endif %}">
+          <a href="{% url 'projects' %}">Projects List</a>
         </li>
-        <li>
-          <a href="#">Current Projects</a>
+        <li class="{% if request.resolver_match.url_name == 'add_project' %}active{% endif %}">
+          <a href="{% url 'add_project' %}">Add Projects</a>
         </li>
-        <li>
-          <a href="#">Closed Projects</a>
-        </li>
-        <li>
-          <a href="#">Project Details</a>
-        </li>
-        <li>
-          <a href="#">Project Discussion</a>
-        </li>
-        <li>
-          <a href="#">Project PSD</a>
-        </li>
-        <li>
-          <a href="#">Task Categories</a>
+        <li class="{% if request.resolver_match.url_name == 'interview' %}active{% endif %}">
+          <a href="{% url 'interview' %}">Assign Projects</a>
         </li>
       </ul>
     </li>
@@ -68,15 +51,6 @@
         </li>
         <li class="{% if request.resolver_match.url_name == 'technology' %}active{% endif %}">
           <a href="{% url 'technology' %}">Manage Technology</a>
-        </li>
-      </ul>
-    </li>
-
-    <li>
-      <a href="#employeeLeave" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dside">Employee Leaves</a>
-      <ul class="collapse list-unstyled" id="employeeLeave">
-        <li>
-          <a href="#">Blackout Days</a>
         </li>
       </ul>
     </li>

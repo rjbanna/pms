@@ -111,8 +111,24 @@ def delete_client(request, client_id):
 
 
 # ------------------------------ ACCOUNTS - EMPLOYEE START ------------------------------ #
-# def employee(request):
-#     employee =
+
+def employee(request):
+    employees = Employee.objects.all()
+    return render(request, template_name = 'create_accounts/employees_list.html', context = { 'employees': employees })
+
+def add_employee(request):
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST, request.FILES)
+        if form.is_valid():
+            employee = form.save(commit = False)
+            employee.save()
+            request.session['success'] = "Successfully added employee"
+            return redirect('employee')
+    else:
+        form = EmployeeForm()
+
+    return render(request, template_name = 'create_accounts/add_employee.html', context = { 'form': form })
+
 # ------------------------------ ACCOUNTS - EMPLOYEE STOP ------------------------------ #
 
 
@@ -162,6 +178,63 @@ def employee_access(request):
     return render(request, template_name = 'create_accounts/employee_access.html', context = { 'form': "rj" })
 
 # ------------------------------ ACCOUNTS - EMPLOYEE ACCESS STOP ------------------------------ #
+
+
+
+# ------------------------------ PROJECTS START ------------------------------ #
+
+def projects(request):
+    projects = Project.objects.all()
+    return render(request, template_name = 'projects/projects_list.html', context = { 'projects': projects })
+
+def add_project(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit = False)
+            project.save()
+            request.session['success'] = "Successfully added project"
+            return redirect('projects')
+    else:
+        form = ProjectForm()
+
+    return render(request, template_name = 'projects/add_project.html', context = { 'form': form })
+
+def edit_project(request, project_id):
+    project = get_object_or_404(Project, pk = project_id)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance = project)
+        if form.is_valid():
+            project = form.save(commit = False)
+            project.save()
+            return redirect('projects')
+    else:
+        form = ProjectForm(instance = project)
+
+    return render(request, template_name = 'projects/edit_project.html', context = { 'form': form })
+
+def delete_project(request, project_id):
+    project = Project.objects.filter(pk = project_id)
+    if project:
+        project = Project.objects.get(pk = project_id)
+        project.delete()
+    return redirect('projects')
+
+
+def assign_project(request, project_id):
+    if request.method == 'POST':
+        form = ProjectAssignForm(request.POST)
+        if form.is_valid():
+            project = form.save(commit = False)
+            project.save()
+            request.session['success'] = "Successfully assigned project"
+            return redirect('projects')
+    else:
+        form = ProjectAssignForm()
+
+    return render(request, template_name = 'projects/assign_project.html', context = { 'form': form })
+
+# ------------------------------ PROJECTS STOP ------------------------------ #
 
 
 

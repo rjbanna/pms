@@ -13,6 +13,9 @@ urlpatterns = [
 
     # -------------------- ACCOUNTS --------------------#
 
+    path('employee', views.employee, name = 'employee'),
+    path('employee/add', views.add_employee, name = 'add_employee'),
+
     path('client', views.view_clients, name = 'view_clients'),
     path('client/add', views.add_clients, name = 'add_clients'),
     path('client/<int:client_id>/edit', views.edit_client, name = 'edit_client'),
@@ -26,6 +29,17 @@ urlpatterns = [
     path('designation/<int:des_id>/delete', views.delete_designation, name = 'delete_designation'),
 
     # -------------------- ACCOUNTS END --------------------#
+
+    # -------------------- PROJECTS --------------------#
+
+    path('projects', views.projects, name = 'projects'),
+    path('project/add', views.add_project, name = 'add_project'),
+    path('project/<int:project_id>/edit', views.edit_project, name = 'edit_project'),
+    path('project/<int:project_id>/delete', views.delete_project, name = 'delete_project'),
+
+    path('project/<int:project_id>/assign', views.assign_project, name = 'assign_project'),
+
+    # -------------------- PROJECTS --------------------#
 
     # -------------------- CAREERS --------------------#
 
